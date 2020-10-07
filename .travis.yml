@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t camullen/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true camullen/docker-react npm run test
